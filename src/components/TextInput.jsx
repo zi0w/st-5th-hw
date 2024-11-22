@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addText } from "../redux/slices/textSlice";
 
-function TextInput({ onAddText }) {
+function TextInput() {
   const [inputValue, setInputValue] = useState("");
+  const dispatch = useDispatch();
+
+  const onAddText = (text) => {
+    dispatch(addText(text));
+  };
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
